@@ -28,3 +28,8 @@ This document provides informaion about the following:
 - Command line discovered expose port: ```docker port redisDynamic 6379```
 - Persisting data, command line: ```docker run -d --name redisMapped -v <host-dir>:<container-dir> redis```
 - Run container foreground: ```docker run -it ubuntu bash```
+
+## 2. Docker file
+- ```FROM nginx:alpine```: defines our base images
+- ```COPY . /usr/share/nginx/html```: copy the content of the directory into a particular location inside the container
+- ```docker build -t <image-name>:<tag> <build-directory>```: docker build image, example ```docker build -t webserver-image:v1 .```
