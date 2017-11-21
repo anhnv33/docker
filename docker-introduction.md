@@ -42,3 +42,4 @@ This document provides informaion about the following:
 - Create a Data Container for storing configuration files using: ```docker create -v /config --name dataContainer busybox```
 - The following command will copy the config.conf file into our dataContainer and the directory config: ```docker cp config.conf dataContainer:/config/```
 - Using the --volumes-from <container> option we can use the mount volumes from other containers inside the container being launched: ```docker run --volumes-from dataContainer ubuntu ls /config```
+- Export / Import Data Container: ```docker export <containerName> > <file.tar>```, ```docker import <file.tar>```
