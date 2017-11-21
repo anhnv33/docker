@@ -37,4 +37,8 @@ This document provides informaion about the following:
 - ```RUN <command>```: run command inside container
 - ```CMD ["npm", "start"]```: run command in background container
 - ```docker run -d --name <container-name> -e NODE_ENV=production -p 3000:3000 my-nodejs-app```: define environment value when run container
-- 
+- ```ONBUILD ...```: The application specific commands won't be executed util the built image is used as a base image
+- ```.dockerignore```: file would be stored in source control, ignore file when build image
+- Create a Data Container for storing configuration files using: ```docker create -v /config --name dataContainer busybox```
+- The following command will copy the config.conf file into our dataContainer and the directory config: ```docker cp config.conf dataContainer:/config/```
+- Using the --volumes-from <container> option we can use the mount volumes from other containers inside the container being launched: ```docker run --volumes-from dataContainer ubuntu ls /config```
