@@ -18,3 +18,8 @@ This document provides informaion about the following:
 
 ## 2. Docker command
 - Find an image for Redis: ```docker search redis ```
+- By default, Docker will run a command in the foreground. To run in the background, the option -d needs to be specified: ```docker run -d redis```
+- Command lists all running containers, the image used to start the container and uptime: ```docker ps```
+- Find out information about individual containers: ```docker inspect <friendly-name|container-id>```
+- Display messages the container has written to standard error or standard out: ```docker logs <friendly-name|container-id>```
+- 
