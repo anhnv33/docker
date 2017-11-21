@@ -13,3 +13,8 @@ This document provides informaion about the following:
 - Docker allows you to run containers
 - A container is a sandboxed process running an application and its dependencies on the host operating system
 - The application inside the container considers itself to be the only process running on the machine while the machine can run multiple containers independently.
+- With Docker, all containers are started based on a Docker image
+- These images contain everything required to launch the process;
+
+## 2. Docker command
+- Find an image for Redis: ```sh docker search redis ```
