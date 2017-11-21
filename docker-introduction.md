@@ -36,3 +36,5 @@ This document provides informaion about the following:
 - ```WORKDIR <directory>```: ensure that all future commands are executed from the directory relative to our application
 - ```RUN <command>```: run command inside container
 - ```CMD ["npm", "start"]```: run command in background container
+- ```docker run -d --name <container-name> -e NODE_ENV=production -p 3000:3000 my-nodejs-app```: define environment value when run container
+- 
