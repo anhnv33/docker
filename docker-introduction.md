@@ -17,4 +17,4 @@ This document provides informaion about the following:
 - These images contain everything required to launch the process;
 
 ## 2. Docker command
-- Find an image for Redis: ```sh docker search redis ```
+- Find an image for Redis: ```docker search redis ```
