@@ -22,4 +22,9 @@ This document provides informaion about the following:
 - Command lists all running containers, the image used to start the container and uptime: ```docker ps```
 - Find out information about individual containers: ```docker inspect <friendly-name|container-id>```
 - Display messages the container has written to standard error or standard out: ```docker logs <friendly-name|container-id>```
-- 
+- If a service needs to be accessible by a process not running in a container, then the port needs to be exposed via the Host
+- Using ```-p <host-port>:<container-port>``` option to expose port, example: ```docker run -d --name redisHostPort -p 6379:6379 redis:latest```
+- Expose Redis but on a randomly available port: ```docker run -d --name redisDynamic -p 6379 redis:latest```
+- Command line discovered expose port: ```docker port redisDynamic 6379```
+- Persisting data, command line: ```docker run -d --name redisMapped -v <host-dir>:<container-dir> redis```
+- Run container foreground: ```docker run -it ubuntu bash```
