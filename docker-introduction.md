@@ -35,4 +35,4 @@ This document provides informaion about the following:
 - ```docker build -t <image-name>:<tag> <build-directory>```: docker build image, example ```docker build -t webserver-image:v1 .```
 - ```WORKDIR <directory>```: ensure that all future commands are executed from the directory relative to our application
 - ```RUN <command>```: run command inside container
-- ```CMD ["npm", "start"]```: same RUN command
+- ```CMD ["npm", "start"]```: run command in background container
