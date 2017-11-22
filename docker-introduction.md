@@ -28,6 +28,7 @@ This document provides informaion about the following:
 - Command line discovered expose port: ```docker port redisDynamic 6379```
 - Persisting data, command line: ```docker run -d --name redisMapped -v <host-dir>:<container-dir> redis```
 - Run container foreground: ```docker run -it ubuntu bash```
+- Remove all images: ```docker rmi $(docker images -f dangling=true -q)```
 
 ## 2. Docker file
 - ```FROM nginx:alpine```: defines our base images
