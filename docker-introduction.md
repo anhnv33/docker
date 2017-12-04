@@ -90,6 +90,9 @@ When adding files or directories that contain special characters (such as [ and 
 ````
 
 This Dockerfile results in an image that causes docker run, to create a new mount point at ```/myvol``` and copy the greeting file into the newly created volume.
+- ```USER <user>[:<group>] or USER <UID>[:<GID>]```: The ```USER``` instruction sets the user name (or UID) and optionally the user group (or GID) to use when running the image and for any ```RUN```, ```CMD``` and ```ENTRYPOINT``` instructions that follow it in the ```Dockerfile```.
+> Warning: When the user does doesn’t have a primary group then the image (or the next instructions) will be run with the root group.
+
 - ```FROM nginx:alpine```: defines our base images
 - ```COPY . /usr/share/nginx/html```: copy the content of the directory into a particular location inside the container
 - ```docker build -t <image-name>:<tag> <build-directory>```: docker build image, example ```docker build -t webserver-image:v1 .```
