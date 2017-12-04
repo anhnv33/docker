@@ -80,6 +80,10 @@ This document provides informaion about the following:
 - ```docker container logs [OPTIONS] CONTAINER```: Fetch the logs of a container
 - ```docker container ls [OPTIONS]```: List containers
 - ```docker container pause CONTAINER [CONTAINER...]```: Pause all processes within one or more containers
+- ````docker container port CONTAINER [PRIVATE_PORT[/PROTO]]```: List port mappings or a specific mapping for the container
+- ```docker container prune [OPTIONS]```: Remove all stopped containers
+- ```docker container rename CONTAINER NEW_NAME```: Rename a container
+- 
 ## 2. Docker file
 - ```ARG CODE_VERSION=latest```: defines agruments used for docker file, an ```ARG``` declared before a ```FROM``` is outside of a build stage, so it can’t be used in any instruction after a ```FROM```. To use the default value of an ```ARG``` declared before the first ```FROM``` use an ```ARG``` instruction without a value inside of a build stage:
 ```sh
