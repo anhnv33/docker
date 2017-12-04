@@ -48,6 +48,22 @@ This document provides informaion about the following:
 
 There can only be one CMD instruction in a Dockerfile. If you list more than one CMD then only the last CMD will take effect.
 - ```LABEL <key>=<value> <key>=<value> <key>=<value> ...```: The ```LABEL``` instruction adds metadata to an image. A ```LABEL``` is a key-value pair. To include spaces within a ```LABEL``` value, use quotes and backslashes as you would in command-line parsing
+- ```MAINTAINER <name>```: The ```MAINTAINER``` instruction sets the Author field of the generated images.
+- ```EXPOSE <port> [<port>/<protocol>...]```: The ```EXPOSE``` instruction informs Docker that the container listens on the specified network ports at runtime. You can specify whether the port listens on TCP or UDP, and the default is ```TCP``` if the protocol is not specified.
+- ```ENV <key>=<value> ...```: The ```ENV``` instruction sets the environment variable ```<key>``` to the value ```<value>```.
+- ```ADD``` has two forms:
+    * ```ADD <src>... <dest>```
+    * ```ADD ["<src>",... "<dest>"]``` (this form is required for paths containing whitespace)
+
+The ```ADD``` instruction copies new files, directories or remote file URLs from <src> and adds them to the filesystem of the image at the path ```<dest>```.
+
+Multiple  ```<src>``` resource may be specified but if they are files or directories then they must be relative to the source directory that is being built (the context of the build).
+
+```sh
+    ADD hom* /mydir/        # adds all files starting with "hom"
+    ADD hom?.txt /mydir/    # ? is replaced with any single character, e.g., "home.txt"
+```
+
 - ```FROM nginx:alpine```: defines our base images
 - ```COPY . /usr/share/nginx/html```: copy the content of the directory into a particular location inside the container
 - ```docker build -t <image-name>:<tag> <build-directory>```: docker build image, example ```docker build -t webserver-image:v1 .```
