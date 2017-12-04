@@ -48,7 +48,26 @@ This document provides informaion about the following:
         REPOSITORY                        TAG                 ID                  CREATED             SIZE
         svendowideit/testimage            version3            f5283438590d        16 seconds ago      335.7 MB
     ```
+    * Commit a container with new configurations
+    ```sh
+        $ docker ps
 
+        CONTAINER ID       IMAGE               COMMAND             CREATED             STATUS              PORTS              NAMES
+        c3f279d17e0a        ubuntu:12.04        /bin/bash           7 days ago          Up 25 hours                            desperate_dubinsky
+        197387f1b436        ubuntu:12.04        /bin/bash           7 days ago          Up 25 hours                            focused_hamilton
+        
+        $ docker inspect -f "{{ .Config.Env }}" c3f279d17e0a
+        
+        [HOME=/ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin]
+        
+        $ docker commit --change "ENV DEBUG true" c3f279d17e0a  svendowideit/testimage:version3
+        
+        f5283438590d
+        
+        $ docker inspect -f "{{ .Config.Env }}" f5283438590d
+        
+        [HOME=/ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin DEBUG=true]   
+    ```
 ## 2. Docker file
 - ```ARG CODE_VERSION=latest```: defines agruments used for docker file, an ```ARG``` declared before a ```FROM``` is outside of a build stage, so it can’t be used in any instruction after a ```FROM```. To use the default value of an ```ARG``` declared before the first ```FROM``` use an ```ARG``` instruction without a value inside of a build stage:
 ```sh
