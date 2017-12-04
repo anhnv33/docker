@@ -31,6 +31,13 @@ This document provides informaion about the following:
 - Remove all images: ```docker rmi $(docker images -f dangling=true -q)```
 
 ## 2. Docker file
+- ```ARG CODE_VERSION=latest```: defines agruments used for docker file, an ```ARG``` declared before a ```FROM``` is outside of a build stage, so it can’t be used in any instruction after a ```FROM```. To use the default value of an ```ARG``` declared before the first ```FROM``` use an ```ARG``` instruction without a value inside of a build stage:
+```sh
+    ARG VERSION=latest
+    FROM busybox:$VERSION
+    ARG VERSION
+    RUN echo $VERSION > image_version
+```
 - ```FROM nginx:alpine```: defines our base images
 - ```COPY . /usr/share/nginx/html```: copy the content of the directory into a particular location inside the container
 - ```docker build -t <image-name>:<tag> <build-directory>```: docker build image, example ```docker build -t webserver-image:v1 .```
