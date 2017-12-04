@@ -73,6 +73,14 @@ When adding files or directories that contain special characters (such as [ and 
 - Different between ```ADD``` and ```COPY```:
     * ```ADD``` allows ```<src>``` to be an URL
     * If the ```<src>``` parameter of ```ADD``` is an archive in a recognised compression format, it will be unpacked
+- The table below shows what command is executed for different ENTRYPOINT / CMD combinations:
+
+| 	|No ENTRYPOINT|	ENTRYPOINT exec_entry p1_entry|	ENTRYPOINT [“exec_entry”, “p1_entry”]|
+|----|-----------|--------------------------------| -------------------------------------|
+| No CMD| error, not allowed|	/bin/sh -c exec_entry p1_entry|	exec_entry p1_entry |
+|CMD [“exec_cmd”, “p1_cmd”]|	exec_cmd p1_cmd |	/bin/sh -c exec_entry p1_entry|	exec_entry p1_entry exec_cmd p1_cmd|
+|CMD [“p1_cmd”, “p2_cmd”]|	p1_cmd p2_cmd|	/bin/sh -c exec_entry p1_entry|	exec_entry p1_entry p1_cmd p2_cmd|
+|CMD exec_cmd p1_cmd|	/bin/sh -c exec_cmd p1_cmd|	/bin/sh -c exec_entry p1_entry|	exec_entry p1_entry /bin/sh -c exec_cmd p1_cmd|
 - ```FROM nginx:alpine```: defines our base images
 - ```COPY . /usr/share/nginx/html```: copy the content of the directory into a particular location inside the container
 - ```docker build -t <image-name>:<tag> <build-directory>```: docker build image, example ```docker build -t webserver-image:v1 .```
