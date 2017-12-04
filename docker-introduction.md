@@ -81,6 +81,13 @@ When adding files or directories that contain special characters (such as [ and 
 |CMD [“exec_cmd”, “p1_cmd”]|	exec_cmd p1_cmd |	/bin/sh -c exec_entry p1_entry|	exec_entry p1_entry exec_cmd p1_cmd|
 |CMD [“p1_cmd”, “p2_cmd”]|	p1_cmd p2_cmd|	/bin/sh -c exec_entry p1_entry|	exec_entry p1_entry p1_cmd p2_cmd|
 |CMD exec_cmd p1_cmd|	/bin/sh -c exec_cmd p1_cmd|	/bin/sh -c exec_entry p1_entry|	exec_entry p1_entry /bin/sh -c exec_cmd p1_cmd|
+- ```VOLUME ["/data"]```: The ```VOLUME``` instruction creates a mount point with the specified name and marks it as holding externally mounted volumes from native host or other containers
+```sh
+    FROM ubuntu
+    RUN mkdir /myvol
+    RUN echo "hello world" > /myvol/greeting
+    VOLUME /myvol                           
+````
 - ```FROM nginx:alpine```: defines our base images
 - ```COPY . /usr/share/nginx/html```: copy the content of the directory into a particular location inside the container
 - ```docker build -t <image-name>:<tag> <build-directory>```: docker build image, example ```docker build -t webserver-image:v1 .```
