@@ -38,6 +38,8 @@ This document provides informaion about the following:
     ARG VERSION
     RUN echo $VERSION > image_version
 ```
+> **Warning:** It is not recommended to use build-time variables for passing secrets like github keys, user credentials etc. Build-time variable values are visible to any user of the image with the docker history command.
+
 - ```RUN``` has 2 forms:
     * ```RUN <command>``` (shell form, the command is run in a shell, which by default is ```/bin/sh -c``` on Linux or ```cmd /S /C``` on Windows)
     * ```RUN ["executable", "param1", "param2"]``` (exec form)
