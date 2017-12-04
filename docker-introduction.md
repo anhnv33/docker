@@ -88,6 +88,8 @@ When adding files or directories that contain special characters (such as [ and 
     RUN echo "hello world" > /myvol/greeting
     VOLUME /myvol                           
 ````
+
+This Dockerfile results in an image that causes docker run, to create a new mount point at ```/myvol``` and copy the greeting file into the newly created volume.
 - ```FROM nginx:alpine```: defines our base images
 - ```COPY . /usr/share/nginx/html```: copy the content of the directory into a particular location inside the container
 - ```docker build -t <image-name>:<tag> <build-directory>```: docker build image, example ```docker build -t webserver-image:v1 .```
