@@ -68,6 +68,13 @@ This document provides informaion about the following:
         
         [HOME=/ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin DEBUG=true]   
     ```
+- ```docker container attach [OPTIONS] CONTAINER```: Attach local standard input, output, and error streams to a running container
+- ```docker container commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]```: Create a new image from a container’s changes
+- ```docker container cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH| - docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH```: Copy files/folders between a container and the local filesystem
+- ```docker container create [OPTIONS] IMAGE [COMMAND] [ARG...]```: Create a new container
+- ```docker container diff CONTAINER```: Inspect changes to files or directories on a container’s filesystem
+- ```docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]```: Run a command in a running container
+- ```docker container export [OPTIONS] CONTAINER```: Export a container’s filesystem as a tar archive
 ## 2. Docker file
 - ```ARG CODE_VERSION=latest```: defines agruments used for docker file, an ```ARG``` declared before a ```FROM``` is outside of a build stage, so it can’t be used in any instruction after a ```FROM```. To use the default value of an ```ARG``` declared before the first ```FROM``` use an ```ARG``` instruction without a value inside of a build stage:
 ```sh
