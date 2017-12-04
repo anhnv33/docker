@@ -64,6 +64,15 @@ Multiple  ```<src>``` resource may be specified but if they are files or directo
     ADD hom?.txt /mydir/    # ? is replaced with any single character, e.g., "home.txt"
 ```
 
+```sh
+    ADD test relativeDir/          # adds "test" to `WORKDIR`/relativeDir/
+    ADD test /absoluteDir/         # adds "test" to /absoluteDir/
+```
+
+When adding files or directories that contain special characters (such as [ and ]), you need to escape those paths following the ```Golang``` rules to prevent them from being treated as a matching pattern. For example, to add a file named arr[0].txt, use the following;
+- Different between ```ADD``` and ```COPY```:
+    * ```ADD``` allows ```<src>``` to be an URL
+    * If the ```<src>``` parameter of ```ADD``` is an archive in a recognised compression format, it will be unpacked
 - ```FROM nginx:alpine```: defines our base images
 - ```COPY . /usr/share/nginx/html```: copy the content of the directory into a particular location inside the container
 - ```docker build -t <image-name>:<tag> <build-directory>```: docker build image, example ```docker build -t webserver-image:v1 .```
