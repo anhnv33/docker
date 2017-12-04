@@ -47,6 +47,7 @@ This document provides informaion about the following:
     * ```CMD command param1 param2``` (shell form)
 
 There can only be one CMD instruction in a Dockerfile. If you list more than one CMD then only the last CMD will take effect.
+- ```LABEL <key>=<value> <key>=<value> <key>=<value> ...```: The ```LABEL``` instruction adds metadata to an image. A ```LABEL``` is a key-value pair. To include spaces within a ```LABEL``` value, use quotes and backslashes as you would in command-line parsing
 - ```FROM nginx:alpine```: defines our base images
 - ```COPY . /usr/share/nginx/html```: copy the content of the directory into a particular location inside the container
 - ```docker build -t <image-name>:<tag> <build-directory>```: docker build image, example ```docker build -t webserver-image:v1 .```
