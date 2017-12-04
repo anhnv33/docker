@@ -29,6 +29,23 @@ This document provides informaion about the following:
 - Persisting data, command line: ```docker run -d --name redisMapped -v <host-dir>:<container-dir> redis```
 - Run container foreground: ```docker run -it ubuntu bash```
 - Remove all images: ```docker rmi $(docker images -f dangling=true -q)```
+- ```docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]```: Create a new image from a container’s changes
+```sh
+    $ docker ps
+
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS              NAMES
+    c3f279d17e0a        ubuntu:12.04        /bin/bash           7 days ago          Up 25 hours                            desperate_dubinsky
+    197387f1b436        ubuntu:12.04        /bin/bash           7 days ago          Up 25 hours                            focused_hamilton
+    
+    $ docker commit c3f279d17e0a  svendowideit/testimage:version3
+    
+    f5283438590d
+    
+    $ docker images
+    
+    REPOSITORY                        TAG                 ID                  CREATED             SIZE
+    svendowideit/testimage            version3            f5283438590d        16 seconds ago      335.7 MB
+```
 
 ## 2. Docker file
 - ```ARG CODE_VERSION=latest```: defines agruments used for docker file, an ```ARG``` declared before a ```FROM``` is outside of a build stage, so it can’t be used in any instruction after a ```FROM```. To use the default value of an ```ARG``` declared before the first ```FROM``` use an ```ARG``` instruction without a value inside of a build stage:
