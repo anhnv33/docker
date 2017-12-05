@@ -71,7 +71,7 @@ This document provides informaion about the following:
 - ```docker container attach [OPTIONS] CONTAINER```: Attach local standard input, output, and error streams to a running container
 - ```docker container commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]```: Create a new image from a container’s changes
 - ```docker container cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH| - docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH```: Copy files/folders between a container and the local filesystem
-- ```docker container create [OPTIONS] IMAGE [COMMAND] [ARG...]```: Create a new container
+- ```docker container create [OPTIONS] IMAGE [COMMAND] [ARG...] - docker create [OPTIONS] IMAGE [COMMAND] [ARG...]```: Create a new container
 - ```docker container diff CONTAINER```: Inspect changes to files or directories on a container’s filesystem
 - ```docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]```: Run a command in a running container
 - ```docker container export [OPTIONS] CONTAINER```: Export a container’s filesystem as a tar archive
