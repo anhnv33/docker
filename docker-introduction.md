@@ -93,6 +93,8 @@ This document provides informaion about the following:
 - ```docker container unpause CONTAINER [CONTAINER...]```: Unpause all processes within one or more containers
 - ```docker container update [OPTIONS] CONTAINER [CONTAINER...]```: Update configuration of one or more containers
 - ```docker container wait CONTAINER [CONTAINER...]```: Block until one or more containers stop, then print their exit codes
+- ```docker exec [OPTIONS] CONTAINER COMMAND [ARG...]```: Run a command in a running container
+- ```docker export [OPTIONS] CONTAINER```: Export a container’s filesystem as a tar archive
 ## 2. Docker file
 - ```ARG CODE_VERSION=latest```: defines agruments used for docker file, an ```ARG``` declared before a ```FROM``` is outside of a build stage, so it can’t be used in any instruction after a ```FROM```. To use the default value of an ```ARG``` declared before the first ```FROM``` use an ```ARG``` instruction without a value inside of a build stage:
 ```sh
